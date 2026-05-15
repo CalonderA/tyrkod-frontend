@@ -1329,7 +1329,7 @@
               <img 
                 src="/logo_sidebar_new.png" 
                 alt="ТурКод" 
-                style={{ width: '160px', height: 'auto' }}
+                style={{ width: '100px', height: 'auto' }}
                 className="object-contain brightness-0 invert opacity-100"
               />
             </div>
