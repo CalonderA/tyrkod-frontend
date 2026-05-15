@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Floripa';
+  src: url('/Floripa.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Oswald';
+  src: url('/Oswald.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-floripa {
+  font-family: 'Floripa', sans-serif !important;
+}
+
+.font-oswald {
+  font-family: 'Oswald', sans-serif !important;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: #ffffff;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+}
