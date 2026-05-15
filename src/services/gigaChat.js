@@ -3,13 +3,17 @@ const AUTH_KEY = 'MDE5YTgxNjItMjljNy03YzJhLTljZjktYzAwZDU2NTdkYTAyOjQ1ZWVmNzBlLT
 let accessToken = null;
 let tokenExpiresAt = 0;
 
+// Определяем базовые URL в зависимости от окружения
+const AUTH_BASE_URL = import.meta.env.DEV ? '' : 'https://ngw.devices.sberbank.ru:9443';
+const API_BASE_URL = import.meta.env.DEV ? '' : 'https://gigachat.devices.sberbank.ru';
+
 async function getAccessToken() {
   if (accessToken && Date.now() < tokenExpiresAt) {
     return accessToken;
   }
   const rqUid = crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substring(2, 15);
   try {
-    const response = await fetch('/api/v2/oauth', {
+    const response = await fetch(`${AUTH_BASE_URL}/api/v2/oauth`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -57,8 +61,8 @@ export async function generateRoute(messages) {
   "chatResponse": "текст (описание маршрута ИЛИ уточняющий вопрос)",
   "routeItems": [{
     "day": "день",
-    "hotel": { "title": "отель", "address": "адрес", "rating": "4.5", "price": "5000", "image": "/image 4.png", "coords": [lat, lon], "website": "https://travel.yandex.ru" },
-    "items": [{ "number": 1, "title": "место", "address": "адрес", "category": "кафе", "rating": "4.8", "hours": "10-22", "image": "/image 3.png", "coords": [lat, lon] }]
+    "hotel": { "title": "отель", "address": "адрес", "rating": "4.5", "price": "5000", "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800", "coords": [lat, lon], "website": "https://travel.yandex.ru" },
+    "items": [{ "number": 1, "title": "место", "address": "адрес", "category": "кафе", "rating": "4.8", "hours": "10-22", "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800", "coords": [lat, lon] }]
   }] ИЛИ null
 }
 Координаты [lat, lon] - только ЧИСЛА.`;
@@ -74,7 +78,7 @@ export async function generateRoute(messages) {
 
     console.log('API Request Body:', JSON.stringify(requestBody, null, 2));
 
-    const response = await fetch('/api/v1/chat/completions', {
+    const response = await fetch(`${API_BASE_URL}/api/v1/chat/completions`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

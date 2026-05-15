@@ -1,7 +1,29 @@
   import React, { useState, useRef, useEffect, useMemo } from 'react';
-  import { Send, Maximize2, MessageSquare, CheckCircle2, Sun, Moon, Map as MapIcon, List, ChevronLeft, Loader2, Calendar, Zap, BookOpen, X } from 'lucide-react';
-  import { motion, AnimatePresence } from 'framer-motion';
-  import { generateRoute } from './services/gigaChat';
+import { Send, Maximize2, MessageSquare, CheckCircle2, Sun, Moon, Map as MapIcon, List, ChevronLeft, Loader2, Calendar, Zap, BookOpen, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { generateRoute } from './services/gigaChat';
+
+// Assets
+import {
+  archIcon,
+  gastroIcon,
+  museumsOffIcon,
+  activeIcon,
+  homeIcon,
+  profileIcon,
+  heartIcon,
+  settingsIcon,
+  chatIcon,
+  logoBg,
+  logoMain,
+  arrowRightBold,
+  tutorialIcon,
+  arrowRight,
+  logoSidebar,
+  chatHeaderLogo,
+  hotelDefault,
+  placeDefault
+} from './assets';
 
   // 2GIS Maps Components
   const MapContext = React.createContext(null);
@@ -907,11 +929,11 @@
     ];
 
     const interestOptions = [
-      { label: 'arch', icon: '/arch_icon.png' },
-      { label: 'gastro', icon: '/gastro_icon.png' },
-      { label: 'nature', icon: '/Без музеев.png' },
-      { label: 'museums', icon: '/arch_icon.png' },
-      { label: 'active', icon: '/4 дня.png' }
+      { label: 'arch', icon: archIcon },
+      { label: 'gastro', icon: gastroIcon },
+      { label: 'nature', icon: museumsOffIcon },
+      { label: 'museums', icon: archIcon },
+      { label: 'active', icon: activeIcon }
     ];
 
     const toggleInterest = (interest) => {
@@ -1094,7 +1116,7 @@
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="absolute -top-10 -right-10 w-[200px] h-[200px] md:w-[400px] md:h-[400px] pointer-events-none"
               >
-                <img src="/sidebar/logo_new.png" alt="" className="w-full h-full object-contain text-[#3B4EF5]" style={{ filter: 'invert(24%) sepia(89%) saturate(6312%) hue-rotate(233deg) brightness(96%) contrast(104%)' }} />
+                <img src={logoBg} alt="" className="w-full h-full object-contain text-[#3B4EF5]" style={{ filter: 'invert(24%) sepia(89%) saturate(6312%) hue-rotate(233deg) brightness(96%) contrast(104%)' }} />
               </motion.div>
               <motion.div 
                 initial={{ opacity: 0 }}
@@ -1102,13 +1124,13 @@
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="absolute -bottom-10 -left-10 w-[200px] h-[200px] md:w-[400px] md:h-[400px] pointer-events-none"
               >
-                <img src="/sidebar/logo_new.png" alt="" className="w-full h-full object-contain text-[#3B4EF5]" style={{ filter: 'invert(24%) sepia(89%) saturate(6312%) hue-rotate(233deg) brightness(96%) contrast(104%)' }} />
+                <img src={logoBg} alt="" className="w-full h-full object-contain text-[#3B4EF5]" style={{ filter: 'invert(24%) sepia(89%) saturate(6312%) hue-rotate(233deg) brightness(96%) contrast(104%)' }} />
               </motion.div>
 
               {/* Logo Image */}
               <div className="flex items-center justify-center mb-10 md:mb-16 select-none w-full px-6 md:px-10 shrink-0">
                 <img 
-                  src="/тур_код_1.png" 
+                  src={logoMain} 
                   alt="ТурКод" 
                   className="w-full max-w-[280px] sm:max-w-[500px] md:max-w-[800px] lg:max-w-[1164px] h-auto object-contain"
                 />
@@ -1124,7 +1146,7 @@
                 >
                   <div className="flex items-center gap-3 sm:gap-4">
                     <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center">
-                      <img src="/основа/Vector 2.png" alt="" className="w-full h-full object-contain brightness-0 invert" />
+                      <img src={arrowRightBold} alt="" className="w-full h-full object-contain brightness-0 invert" />
                     </div>
                     <span className="text-[16px] sm:text-[22px] font-bold">{t('letsGo')}</span>
                   </div>
@@ -1141,7 +1163,7 @@
                 >
                   <div className="flex items-center gap-3 sm:gap-4">
                     <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center">
-                      <img src="/основа/book_spread_outline_28.png" alt="" className="w-full h-full object-contain brightness-0 invert" />
+                      <img src={tutorialIcon} alt="" className="w-full h-full object-contain brightness-0 invert" />
                     </div>
                     <span className="text-[16px] sm:text-[22px] font-bold">{t('tutorial')}</span>
                   </div>
@@ -1327,7 +1349,7 @@
               }}
             >
               <img 
-                src="/logo_sidebar_new.png" 
+                src={logoSidebar} 
                 alt="ТурКод" 
                 style={{ width: '100px', height: 'auto' }}
                 className="object-contain brightness-0 invert opacity-100"
@@ -1339,15 +1361,15 @@
             
             <nav className="flex flex-col gap-4 items-center">
               <SidebarItem 
-                icon="/sidebar/home.png" 
+                icon={homeIcon} 
                 label={t('home')} 
                 active={viewMode === 'landing'} 
                 darkMode={darkMode} 
                 onClick={() => setViewMode('landing')}
               />
-              <SidebarItem icon="/sidebar/profile_fill.png" label={t('profile')} darkMode={darkMode} />
-              <SidebarItem icon="/sidebar/mdi_heart.png" label={t('favorites')} darkMode={darkMode} />
-              <SidebarItem icon="/sidebar/mdi_gear.png" label={t('settings')} darkMode={darkMode} />
+              <SidebarItem icon={profileIcon} label={t('profile')} darkMode={darkMode} />
+              <SidebarItem icon={heartIcon} label={t('favorites')} darkMode={darkMode} />
+              <SidebarItem icon={settingsIcon} label={t('settings')} darkMode={darkMode} />
             </nav>
             
             <div className="mt-auto flex items-center justify-end w-full px-4 mb-4 gap-7">
@@ -1383,7 +1405,7 @@
                     <div className="flex flex-col gap-1">
                       <div className="mb-1">
                         <img 
-                          src="/настройки/Group 11.png" 
+                          src={chatHeaderLogo} 
                           alt="ТурКод" 
                           className="h-[35px] md:h-[45px] w-auto object-contain"
                         />
@@ -1403,7 +1425,7 @@
                         </button>
                         <ThemeToggle darkMode={darkMode} toggle={toggleDarkMode} />
                       </div>
-                      <img src="/Union.png" alt="chat" style={{ width: '20px', height: '18px' }} className={`cursor-pointer opacity-70 hover:opacity-100 transition-opacity object-contain ${darkMode ? 'brightness-0 invert' : ''}`} />
+                      <img src={chatIcon} alt="chat" style={{ width: '20px', height: '18px' }} className={`cursor-pointer opacity-70 hover:opacity-100 transition-opacity object-contain ${darkMode ? 'brightness-0 invert' : ''}`} />
                       <button 
                         onClick={() => setIsChatFullscreen(!isChatFullscreen)}
                         className="p-1 hover:bg-gray-100 dark:hover:bg-white/10 rounded-lg transition-colors"
@@ -1871,7 +1893,7 @@
                 }`}
               >
                 <div className="w-6 h-6 flex items-center justify-center mx-auto">
-                  <img src="/sidebar/home.png" alt="" className={`w-6 h-6 object-contain ${viewMode === 'landing' ? 'brightness-0 invert' : 'opacity-50'}`} />
+                  <img src={homeIcon} alt="" className={`w-6 h-6 object-contain ${viewMode === 'landing' ? 'brightness-0 invert' : 'opacity-50'}`} />
                 </div>
                 <span className="text-[10px] font-bold text-center w-full leading-none">{t('home')}</span>
               </button>
@@ -1883,21 +1905,21 @@
                 }`}
               >
                 <div className="w-6 h-6 flex items-center justify-center mx-auto">
-                  <img src="/Union.png" alt="" className={`w-6 h-6 object-contain ${viewMode === 'list' || viewMode === 'map' ? 'brightness-0 invert' : 'opacity-50'}`} />
+                  <img src={chatIcon} alt="" className={`w-6 h-6 object-contain ${viewMode === 'list' || viewMode === 'map' ? 'brightness-0 invert' : 'opacity-50'}`} />
                 </div>
                 <span className="text-[10px] font-bold text-center w-full leading-none">Чат</span>
               </button>
 
               <button className="flex-1 flex flex-col items-center justify-center gap-1 p-2 text-gray-400">
                 <div className="w-6 h-6 flex items-center justify-center mx-auto">
-                  <img src="/sidebar/mdi_heart.png" alt="" className="w-6 h-6 object-contain opacity-50" />
+                  <img src={heartIcon} alt="" className="w-6 h-6 object-contain opacity-50" />
                 </div>
                 <span className="text-[10px] font-bold text-center w-full leading-none">{t('favorites')}</span>
               </button>
 
               <button className="flex-1 flex flex-col items-center justify-center gap-1 p-2 text-gray-400">
                 <div className="w-6 h-6 flex items-center justify-center mx-auto">
-                  <img src="/sidebar/profile_fill.png" alt="" className="w-6 h-6 object-contain opacity-50" />
+                  <img src={profileIcon} alt="" className="w-6 h-6 object-contain opacity-50" />
                 </div>
                 <span className="text-[10px] font-bold text-center w-full leading-none">{t('profile')}</span>
               </button>

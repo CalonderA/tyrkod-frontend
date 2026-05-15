@@ -4,14 +4,14 @@
 
 @font-face {
   font-family: 'Floripa';
-  src: url('/Floripa.ttf') format('truetype');
+  src: url('./assets/fonts/Floripa.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Oswald';
-  src: url('/Oswald.ttf') format('truetype');
+  src: url('./assets/fonts/Oswald.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
